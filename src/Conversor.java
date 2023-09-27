@@ -68,10 +68,10 @@ public class Conversor extends JFrame {
 		opciones = new JComboBox();
 		opciones.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
 		opciones.setModel(new DefaultComboBoxModel(new String[] {"Select an option:", "Mexican pesos to Dollars", "Mexican pesos to Euros", "Mexican Pesos to Sterling Pounds", "Mexican pesos to Japanes yen", "Mexican pesos to South-Korean won", "Dollars to Mexican pesos", "Euros to Mexican pesos", "Sterling Pounds to Mexican pesos", "Japanes yen to Mexican pesos", "South-Korean won to Mexican pesos"}));
-		opciones.setBounds(85, 56, 255, 21);
+		opciones.setBounds(80, 56, 270, 21);
 		contentPane.add(opciones);
 		
-		JLabel lblNewLabel_1 = new JLabel("Enter the amount");
+		JLabel lblNewLabel_1 = new JLabel("Enter the amount ");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewLabel_1.setFont(new Font("Arial Narrow", Font.BOLD, 14));
 		lblNewLabel_1.setBounds(113, 100, 101, 14);
@@ -84,7 +84,7 @@ public class Conversor extends JFrame {
 		contentPane.add(cantidadAConvertir);
 		cantidadAConvertir.setColumns(10);
 		
-		botonConvertir = new JButton("Convert");
+		botonConvertir = new JButton(" Convert ");
 		botonConvertir.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
 		botonConvertir.addActionListener(new ActionListener() {
