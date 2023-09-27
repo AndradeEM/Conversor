@@ -49,7 +49,7 @@ public class Conversor extends JFrame {
 	 * Create the frame.
 	 */
 	public Conversor() {
-		setTitle("Conversor Alura");
+		setTitle("Alura challenge ONE G5 converter");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -59,7 +59,7 @@ public class Conversor extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Conversor de divisas");
+		JLabel lblNewLabel = new JLabel("Currency converter");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Bookman Old Style", Font.BOLD, 18));
 		lblNewLabel.setBounds(84, 22, 261, 28);
@@ -67,11 +67,11 @@ public class Conversor extends JFrame {
 		
 		opciones = new JComboBox();
 		opciones.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 14));
-		opciones.setModel(new DefaultComboBoxModel(new String[] {"Seleccione una opción:", "Pesos a Dolares", "Pesos a Euros", "Pesos a Yen Japones", "Pesos a Won Coreano", "Dolares a Pesos", "Euros a Pesos", "Yen Japones a Pesos", "Won Coreano a Pesos"}));
-		opciones.setBounds(128, 56, 180, 21);
+		opciones.setModel(new DefaultComboBoxModel(new String[] {"Select an option:", "Mexican pesos to Dollars", "Mexican pesos to Euros", "Mexican Pesos to Sterling Pounds", "Mexican pesos to Japanes yen", "Mexican pesos to South-Korean won", "Dollars to Mexican pesos", "Euros to Mexican pesos", "Sterling Pounds to Mexican pesos", "Japanes yen to Mexican pesos", "South-Korean won to Mexican pesos"}));
+		opciones.setBounds(85, 56, 255, 21);
 		contentPane.add(opciones);
 		
-		JLabel lblNewLabel_1 = new JLabel("Ingrese la cantidad");
+		JLabel lblNewLabel_1 = new JLabel("Enter the amount");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewLabel_1.setFont(new Font("Arial Narrow", Font.BOLD, 14));
 		lblNewLabel_1.setBounds(113, 100, 101, 14);
@@ -84,7 +84,7 @@ public class Conversor extends JFrame {
 		contentPane.add(cantidadAConvertir);
 		cantidadAConvertir.setColumns(10);
 		
-		botonConvertir = new JButton("Convertir");
+		botonConvertir = new JButton("Convert");
 		botonConvertir.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
 		botonConvertir.addActionListener(new ActionListener() {
@@ -97,31 +97,37 @@ public class Conversor extends JFrame {
 				switch (opciones.getSelectedIndex()) {
 				
 				case 0:
-					resultado.setText("Seleccione una opcion valida ");
+					resultado.setText("Select a valid option");
 					break;
-				case 1:
+				case 1:  //pesos a dolares
 					Conversor.convertir(17.6945, cantidad);
 					break;
-				case 2:
+				case 2:  // pesos a euros
 					Conversor.convertir(18.5837, cantidad);
 					break;
-				case 3:
+				case 3:  // pesos a libras esterlinas
+					Conversor.convertir(21.45, cantidad);
+					break;
+				case 4:  // pesos a Yen Japones
 					Conversor.convertir(0.1182, cantidad);
 					break;
-				case 4:
+				case 5:  // pesos a won sur-coreano
 					Conversor.convertir(0.0100, cantidad);
 					break;
-				case 5:
+				case 6:  // dolares a pesos
 					Conversor.convertir(0.05653, cantidad );
 					break;
-				case 6:
+				case 7:  // euros a pesos
 					Conversor.convertir(0.05381, cantidad);
 					break;
-				case 7:
+				case 8:  // libras esterlinas a pesos
+					Conversor.convertir(0.047, cantidad);
+					break;
+				case 9:  // yen japones a pesos
 					Conversor.convertir(8.4602, cantidad);
 					break;
-				case 8:
-					Conversor.convertir(76.7000, cantidad);
+				case 10:  // won sur-coreano a pesos
+					Conversor.convertir(76.7300, cantidad);
 					break;
 				default:
 					System.exit(0);
@@ -132,7 +138,7 @@ public class Conversor extends JFrame {
 		botonConvertir.setBounds(163, 130, 120, 23);
 		contentPane.add(botonConvertir);
 		
-		botonSalir = new JButton("Salir");
+		botonSalir = new JButton("Exit");
 		botonSalir.setFont(new Font("Tahoma", Font.BOLD, 12));
 		botonSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -157,7 +163,7 @@ public class Conversor extends JFrame {
 		JMenu mnNewMenu = new JMenu("Menu");
 		menuBar.add(mnNewMenu);
 		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Acerca de...");
+		JMenuItem mntmNewMenuItem = new JMenuItem("About...");
 		mnNewMenu.add(mntmNewMenuItem);
 	}
 
@@ -172,7 +178,7 @@ public class Conversor extends JFrame {
 		resultado.setText(String.valueOf(formatear.format(resultadoFinal)));
 		
 		}else {
-			resultado.setText("Introduzca un valor diferente de 0");
+			resultado.setText("Enter a value different from 0");
 
 		}
 	}
