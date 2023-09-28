@@ -14,10 +14,13 @@ import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
-import javax.swing.ImageIcon;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Conversor extends JFrame {
 
@@ -78,6 +81,20 @@ public class Conversor extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		cantidadAConvertir = new JTextField();
+		cantidadAConvertir.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent error) {  // permite que se introduzcan solo numeros
+				int key = error.getKeyChar();
+				
+				boolean numeros = key >=48 && key <=57;
+				
+				if (!numeros) {
+					
+					error.consume();
+				}
+				
+			}
+		});
 		cantidadAConvertir.setText("0");
 		cantidadAConvertir.setFont(new Font("Arial", Font.BOLD, 12));
 		cantidadAConvertir.setBounds(222, 99, 86, 20);
@@ -142,7 +159,25 @@ public class Conversor extends JFrame {
 		botonSalir.setFont(new Font("Tahoma", Font.BOLD, 12));
 		botonSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				int respuesta = JOptionPane.showConfirmDialog(null, " Do you want continue using the converter ?");
+				
+				switch (respuesta) {
+				
+				case 0:
+					
+					break;
+				case 1:
+					JOptionPane.showMessageDialog(null, "Finished program");
+					System.exit(0);
+					break;
+				case 2:
+					JOptionPane.showMessageDialog(null, "Finished program");
+					System.exit(0);
+					break;
+				default:
+					break;
+				}
+				
 			}
 		});
 		botonSalir.setBounds(335, 227, 89, 23);
@@ -164,6 +199,11 @@ public class Conversor extends JFrame {
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("About...");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Currency converter v1.0 By Erika Muñoz Andrade");
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem);
 	}
 
@@ -174,8 +214,8 @@ public class Conversor extends JFrame {
 		
 		if (cantidad != 0) {
 			
-		resultadoFinal = cantidad / tipoDeCambio;
-		resultado.setText(String.valueOf(formatear.format(resultadoFinal)));
+			resultadoFinal = cantidad / tipoDeCambio;
+			resultado.setText(String.valueOf(formatear.format(resultadoFinal)));
 		
 		}else {
 			resultado.setText("Enter a value different from 0");
